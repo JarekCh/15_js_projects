@@ -3,14 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="app.js" defer></script>
     <title>Video</title>
 
     <!-- styles -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>video project</h1>
-    <!-- javascript -->
-    <script src="app.js"></script>
+    <!-- header -->
+    <header>
+      <video class="video-container" muted autoplay loop>
+        <source src="./video.mp4" type="video/mp4"> 
+      </video>
+      <h1>video project</h1>
+      <!-- videos switch -->
+      <button class="switch-btn">
+        <span>
+          play
+        </span>
+        <span>
+          pause
+        </span>
+        <span class="switch">          
+        </span>
+      </button>
+    </header>
   </body>
 </html>
