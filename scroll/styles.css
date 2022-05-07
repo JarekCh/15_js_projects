@@ -213,11 +213,9 @@ nav {
 .fixed-nav .links a:hover {
   color: var(--clr-secondary);
 }
-
-.fixed-nav .links-container {
+/* .fixed-nav .links-container {
   height: auto !important;
-}
-
+} */
 .nav-header {
   display: flex;
   align-items: center;
@@ -367,7 +365,6 @@ footer p {
   border-radius: var(--radius);
   color: var(--clr-white);
   animation: bounce 2s ease-in-out infinite;
-
   visibility: hidden;
   z-index: -100;
 }
