@@ -40,4 +40,35 @@ const date = futureDate.getDate();
 
 const weekday = weekdays[futureDate.getDay()];
 
-giveaway.textContent = `giveaway ends on ${weekday}, ${date} ${month} ${year} ${hours}:${minutes}am`;
+giveaway.textContent = `giveaway ends on ${weekday}, ${date} ${month}
+ ${year} ${hours}:${minutes}`;
+
+// future timie in ms
+
+const futureTime = futureDate.getTime();
+
+function getRemaningTime() {
+  const today = new Date().getTime();
+  const t = futureTime - today;
+  // 1s = 1000ms
+  // 1m = 60s
+  // 1hr = 60m
+  // 1d = 24hr
+  // values in miliseconds
+  const oneDay = 24*60*60*1000;
+  const oneHour = 60*60*1000;
+  const oneMinute = 60*100;
+  
+  //calculate all values
+  let days =Math.floor.apply(t/oneDay);  
+  let hours = Math.floor((t % oneDay) / oneHour);  
+  let minutes = Math.floor((t % oneHour) / oneMinute);
+  let seconds = Math.floor((t % oneMinute) / 1000);
+  console.log(seconds);
+  
+  //set values array
+  const values = [days,hours,minutes,seconds];
+}
+
+getRemaningTime();
+
