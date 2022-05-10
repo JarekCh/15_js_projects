@@ -3,7 +3,7 @@
 const alert = document.querySelector('.alert');
 const form = document.querySelector('.grocery-form');
 const grocery = document.getElementById('grocery');
-const submitBtn = document.querySelector('.submit');
+const submitBtn = document.querySelector('.submit-btn');
 const container = document.querySelector('.grocery-container');
 const list = document.querySelector('.grocery-list');
 const clearBtn = document.querySelector('.clear-btn');
@@ -17,6 +17,8 @@ let editID = "";
 // ****** EVENT LISTENERS **********
 // submit form
 form.addEventListener('submit', addItem);
+//clear items
+clearBtn.addEventListener('click', clearItems);
 
 
 // ****** FUNCTIONS **********
@@ -56,6 +58,10 @@ function addItem(e) {
           </button>
         </div>
         `
+        const deleteBtn = element.querySelector('.delete-btn');
+        const editBtn = element.querySelector('.edit-btn');
+        deleteBtn.addEventListener('click', deleteItem);
+        editBtn.addEventListener('click', editItem);
         //append child
         list.appendChild(element);
         displayAlert('item added to the list', 'success');
@@ -86,19 +92,55 @@ function displayAlert(text, action) {
         alert.classList.remove(`alert-${action}`);  
     }, 1000);
 }
+//clear items
+function clearItems() {
+    const items = document.querySelectorAll(".grocery-item");
+    if (items.length > 0) {
+      items.forEach(function (item) {
+        list.removeChild(item);
+      });
+    }
+    container.classList.remove("show-container");
+    displayAlert("empty list", "danger");
+    setBackToDefault();
+    //localStorage.removeItem("list");
+  }
+
+// edit function
+function editItem(e) {
+    console.log('item edit');
+}
+
+// delete function
+function deleteItem(e) {
+    const element = e.currentTarget.parentElement.parentElement;
+    const id = e.currentTarget.dataset.id;
+    list.removeChild(element);
+    if(list.children.length === 0) {
+        container.classList.remove('show-container');
+    }
+    displayAlert('item removed', 'danger');
+    setBackToDefault();
+    //remove from local storage
+    // removeFromLocalStorage(id);
+}
 
 // set back to default
 function setBackToDefault() {
     grocery.value = '';
     editFlag = false;
     editID = "";
-    submitBtn.textContent = 'subtmit';
+    submitBtn.textContent = 'submit';
 }
 
 // ****** LOCAL STORAGE **********
 
 function addToLocalStorage(id, value) {
     console.log("added to local storage");
+}
+
+function removeFromLocalStorage(id) {
+
 }
 
 // ****** SETUP ITEMS **********
