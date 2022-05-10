@@ -61,7 +61,10 @@ function addItem(e) {
         displayAlert('item added to the list', 'success');
         //show container
         container.classList.add('show-container');
-
+        //add to local storage
+        addToLocalStorage(id, value);
+        // set back to default
+        setBackToDefault()
     }
     else if(!value && editFlag){
         console.log('editing')
@@ -69,7 +72,7 @@ function addItem(e) {
     else{
         displayAlert('please enter the value', 'danger');
     }
-    console.log(id);
+    
 }
 
 // display alert
@@ -84,7 +87,18 @@ function displayAlert(text, action) {
     }, 1000);
 }
 
+// set back to default
+function setBackToDefault() {
+    grocery.value = '';
+    editFlag = false;
+    editID = "";
+    submitBtn.textContent = 'subtmit';
+}
 
 // ****** LOCAL STORAGE **********
+
+function addToLocalStorage(id, value) {
+    console.log("added to local storage");
+}
 
 // ****** SETUP ITEMS **********
